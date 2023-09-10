@@ -1,0 +1,4 @@
+name: ShowItem
+version: '${project.version}'
+main: com.github.firewolf8385.showitem.ShowItemPlugin
+api-version: 1.13
