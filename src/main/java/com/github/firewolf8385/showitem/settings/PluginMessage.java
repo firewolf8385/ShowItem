@@ -33,8 +33,9 @@ public enum PluginMessage {
     FORMAT_CHESTPLATE("Formats.Chestplate", "%luckperms_prefix% %player_name% <green>is currently wearing <item>"),
     FORMAT_LEGGINGS("Formats.Leggings", "%luckperms_prefix% %player_name% <green>is currently wearing <item>"),
     FORMAT_BOOTS("Formats.Boots", "%luckperms_prefix% %player_name% <green>is currently wearing <item>"),
-    NO_PERMISSION("Messages.NoPermission", "<red><bold>Error</bold> <dark_gray>>» <red>You do not have access to that command."),
-    ONLY_PLAYERS_CAN_USE("Messages.OnlyPlayersCanUse", "<red><bold>Error</bold> <dark_gray>>» <red>Only players can use that command!");
+    NO_PERMISSION("Messages.NoPermission", "<red><bold>Error</bold> <dark_gray>» <red>You do not have access to that command."),
+    ONLY_PLAYERS_CAN_USE("Messages.OnlyPlayersCanUse", "<red><bold>Error</bold> <dark_gray>» <red>Only players can use that command!"),
+    NO_ITEM_IN_HAND("Messages.NoItemInHand", "<red><bold>Error</bold> <dark_gray>» <red>You are not holding an item.");
 
     private final String configPath;
     private final String defaultValue;

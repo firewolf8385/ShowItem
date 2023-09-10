@@ -9,5 +9,6 @@ Formats:
   Boots: "%luckperms_prefix% %player_name% <green>is currently wearing <item>"
 
 Messages:
-  NoPermission: "<red><bold>Error</bold> <dark_gray>>» <red>You do not have access to that command."
-  OnlyPlayersCanUse: "<red><bold>Error</bold> <dark_gray>>» <red>Only players can use that command!"
+  NoPermission: "<red><bold>Error</bold> <dark_gray>» <red>You do not have access to that command."
+  OnlyPlayersCanUse: "<red><bold>Error</bold> <dark_gray>» <red>Only players can use that command!"
+  NoItemInHand: "<red><bold>Error</bold> <dark_gray>» <red>You are not holding an item."

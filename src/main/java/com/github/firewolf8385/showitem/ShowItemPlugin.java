@@ -24,6 +24,7 @@
  */
 package com.github.firewolf8385.showitem;
 
+import com.github.firewolf8385.showitem.commands.AbstractCommand;
 import com.github.firewolf8385.showitem.settings.SettingsManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -41,6 +42,9 @@ public final class ShowItemPlugin extends JavaPlugin {
 
         // Enables bStats for statistics tracking.
         new Metrics(this, 19781);
+
+        // Register commands.
+        AbstractCommand.registerCommands(this);
     }
 
     /**
