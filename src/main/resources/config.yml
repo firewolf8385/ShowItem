@@ -1,0 +1,13 @@
+# How each /Show command should be formatted.
+# Use <item> for the item.
+# Supports PlaceholderAPI placeholders.
+Formats:
+  Hand: "%luckperms_prefix% %player_name% <green>is currently holding <item>"
+  Helmet: "%luckperms_prefix% %player_name% <green>is currently wearing <item>"
+  Chestplate: "%luckperms_prefix% %player_name% <green>is currently wearing <item>"
+  Leggings: "%luckperms_prefix% %player_name% <green>is currently wearing <item>"
+  Boots: "%luckperms_prefix% %player_name% <green>is currently wearing <item>"
+
+Messages:
+  NoPermission: "<red><bold>Error</bold> <dark_gray>>» <red>You do not have access to that command."
+  OnlyPlayersCanUse: "<red><bold>Error</bold> <dark_gray>>» <red>Only players can use that command!"
