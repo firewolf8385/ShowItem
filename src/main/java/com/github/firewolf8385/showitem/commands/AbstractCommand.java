@@ -60,6 +60,10 @@ public abstract class AbstractCommand implements CommandExecutor {
     public static void registerCommands(ShowItemPlugin pl) {
         plugin = pl;
         new ShowItemCMD(pl);
+        new ShowHelmetCMD(pl);
+        new ShowChestplateCMD(pl);
+        new ShowLeggingsCMD(pl);
+        new ShowBootsCMD(pl);
     }
 
     /**

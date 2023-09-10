@@ -35,7 +35,11 @@ public enum PluginMessage {
     FORMAT_BOOTS("Formats.Boots", "%luckperms_prefix% %player_name% <green>is currently wearing <item>"),
     NO_PERMISSION("Messages.NoPermission", "<red><bold>Error</bold> <dark_gray>» <red>You do not have access to that command."),
     ONLY_PLAYERS_CAN_USE("Messages.OnlyPlayersCanUse", "<red><bold>Error</bold> <dark_gray>» <red>Only players can use that command!"),
-    NO_ITEM_IN_HAND("Messages.NoItemInHand", "<red><bold>Error</bold> <dark_gray>» <red>You are not holding an item.");
+    NO_ITEM_IN_HAND("Messages.NoItemInHand", "<red><bold>Error</bold> <dark_gray>» <red>You are not holding an item."),
+    NO_HELMET("Messages.NoHelmet", "<red><bold>Error</bold> <dark_gray>» <red>You are not wearing a helmet."),
+    NO_CHESTPLATE("Messages.NoChestplate", "<red><bold>Error</bold> <dark_gray>» <red>You are not wearing a chestplate."),
+    NO_LEGGINGS("Messages.NoLeggings", "<red><bold>Error</bold> <dark_gray>» <red>You are not wearing leggings."),
+    NO_BOOTS("Messages.NoBoots", "<red><bold>Error</bold> <dark_gray>» <red>You are not wearing boots.");
 
     private final String configPath;
     private final String defaultValue;

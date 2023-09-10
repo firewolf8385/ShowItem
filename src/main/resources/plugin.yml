@@ -6,3 +6,11 @@ api-version: 1.13
 commands:
   showitem:
     description: Announce the currently held item in chat.
+  showhelmet:
+    description: Show the currently worn helmet in chat.
+  showchestplate:
+    description: Show the currently worn chestplate in chat.
+  showleggings:
+    description: Show the currently worn leggings in chat.
+  showboots:
+    description: Show the currently worn boots in chat.

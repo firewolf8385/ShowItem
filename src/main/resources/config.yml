@@ -12,3 +12,7 @@ Messages:
   NoPermission: "<red><bold>Error</bold> <dark_gray>» <red>You do not have access to that command."
   OnlyPlayersCanUse: "<red><bold>Error</bold> <dark_gray>» <red>Only players can use that command!"
   NoItemInHand: "<red><bold>Error</bold> <dark_gray>» <red>You are not holding an item."
+  NoHelmet: "<red><bold>Error</bold> <dark_gray>» <red>You are not wearing a helmet."
+  NoChestplate: "<red><bold>Error</bold> <dark_gray>» <red>You are not wearing a chestplate."
+  NoLeggings: "<red><bold>Error</bold> <dark_gray>» <red>You are not wearing leggings."
+  NoBoots: "<red><bold>Error</bold> <dark_gray>» <red>You are not wearing boots."
