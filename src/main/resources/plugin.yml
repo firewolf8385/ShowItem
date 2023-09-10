@@ -2,6 +2,9 @@ name: ShowItem
 version: '${project.version}'
 main: com.github.firewolf8385.showitem.ShowItemPlugin
 api-version: 1.13
+authors: [firewolf8385]
+description: Announce in chat what item a player is holding!
+depend: [PlaceholderAPI]
 
 commands:
   showitem:
