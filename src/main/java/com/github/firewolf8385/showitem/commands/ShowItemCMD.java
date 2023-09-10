@@ -83,7 +83,9 @@ public class ShowItemCMD extends AbstractCommand {
         String configMessage = PlaceholderAPI.setPlaceholders(player, plugin.settingsManager().processMessage(PluginMessage.FORMAT_HAND));
 
         // Item Component.
-        Component itemComponent = Component.text().append(item.displayName()).hoverEvent(item.asHoverEvent()).asComponent();
+        String itemName = MiniMessage.miniMessage().serialize(item.displayName());
+        if(item.getAmount() > 1) itemName += " <white>x" + item.getAmount();
+        Component itemComponent = Component.text().append(MiniMessage.miniMessage().deserialize(itemName)).hoverEvent(item.asHoverEvent()).asComponent();
 
         // Final component
         Component component = MiniMessage.miniMessage().deserialize(ChatUtils.replaceLegacy(configMessage), Placeholder.component("item", itemComponent));
