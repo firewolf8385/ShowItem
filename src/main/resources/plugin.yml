@@ -6,11 +6,16 @@ api-version: 1.13
 commands:
   showitem:
     description: Announce the currently held item in chat.
+    aliases: [showhand]
   showhelmet:
     description: Show the currently worn helmet in chat.
+    aliases: [showhat]
   showchestplate:
     description: Show the currently worn chestplate in chat.
+    aliases: [showshirt]
   showleggings:
     description: Show the currently worn leggings in chat.
+    aliases: [showpants]
   showboots:
     description: Show the currently worn boots in chat.
+    aliases: [showshoes]
