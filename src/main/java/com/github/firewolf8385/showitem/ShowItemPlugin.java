@@ -25,12 +25,12 @@
 package com.github.firewolf8385.showitem;
 
 import com.github.firewolf8385.showitem.commands.AbstractCommand;
-import com.github.firewolf8385.showitem.settings.SettingsManager;
+import com.github.firewolf8385.showitem.settings.ConfigManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ShowItemPlugin extends JavaPlugin {
-    private SettingsManager settingsManager;
+    private ConfigManager configManager;
 
     /**
      * Runs when the plugin is first enabled.
@@ -38,7 +38,7 @@ public final class ShowItemPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         // Loads the configuration file. Creates if not present.
-        settingsManager = new SettingsManager(this);
+        configManager = new ConfigManager(this);
 
         // Enables bStats for statistics tracking.
         new Metrics(this, 19781);
@@ -48,10 +48,10 @@ public final class ShowItemPlugin extends JavaPlugin {
     }
 
     /**
-     * Gets the plugins settings manager, which manages the config file.
-     * @return Settings Manager.
+     * Gets the plugins config manager, which manages the config file.
+     * @return Config Manager.
      */
-    public SettingsManager settingsManager() {
-        return settingsManager;
+    public ConfigManager getConfigManager() {
+        return configManager;
     }
 }

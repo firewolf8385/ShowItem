@@ -36,6 +36,7 @@ import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Runs the /showchestplate command, which displays the chestplate the player is currently wearing in chat.
@@ -48,7 +49,7 @@ public class ShowChestplateCMD extends AbstractCommand {
      * Creates the command.
      * @param plugin Instance of the plugin.
      */
-    public ShowChestplateCMD(final ShowItemPlugin plugin) {
+    public ShowChestplateCMD(@NotNull final ShowItemPlugin plugin) {
         super("showchestplate", "showitem.use", false);
         this.plugin = plugin;
     }
@@ -59,25 +60,25 @@ public class ShowChestplateCMD extends AbstractCommand {
      * @param args Arguments of the command.
      */
     @Override
-    public void execute(CommandSender sender, String[] args) {
-        Player player = (Player) sender;
+    public void execute(@NotNull final CommandSender sender, @NotNull final String[] args) {
+        final Player player = (Player) sender;
 
         // Makes sure they have a helmet.
         if(player.getInventory().getChestplate() == null || player.getInventory().getChestplate().getType() == Material.AIR) {
-            ChatUtils.chat(player, plugin.settingsManager().processMessage(PluginMessage.NO_CHESTPLATE));
+            ChatUtils.chat(player, plugin.getConfigManager().processMessage(PluginMessage.NO_CHESTPLATE));
             return;
         }
 
-        ItemStack item = player.getInventory().getChestplate();
+        final ItemStack item = player.getInventory().getChestplate();
 
         // Config string.
-        String configMessage = PlaceholderAPI.setPlaceholders(player, plugin.settingsManager().processMessage(PluginMessage.FORMAT_CHESTPLATE));
+        final String configMessage = PlaceholderAPI.setPlaceholders(player, plugin.getConfigManager().processMessage(PluginMessage.FORMAT_CHESTPLATE));
 
         // Item Component.
-        Component itemComponent = Component.text().append(item.displayName()).hoverEvent(item.asHoverEvent()).asComponent();
+        final Component itemComponent = Component.text().append(item.displayName()).hoverEvent(item.asHoverEvent()).asComponent();
 
         // Final component
-        Component component = MiniMessage.miniMessage().deserialize(ChatUtils.replaceLegacy(configMessage), Placeholder.component("item", itemComponent));
+        final Component component = MiniMessage.miniMessage().deserialize(ChatUtils.replaceLegacy(configMessage), Placeholder.component("item", itemComponent));
 
         // Broadcast message
         Bukkit.broadcast(component);

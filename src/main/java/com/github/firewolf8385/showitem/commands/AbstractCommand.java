@@ -47,7 +47,7 @@ public abstract class AbstractCommand implements CommandExecutor {
      * @param permission Permission required to use the command.
      * @param canConsoleUse Whether console can use the command.
      */
-    public AbstractCommand(final String commandName, final String permission, final boolean canConsoleUse) {
+    public AbstractCommand(@NotNull final String commandName, @NotNull final String permission, @NotNull final boolean canConsoleUse) {
         this.permission = permission;
         this.canConsoleUse = canConsoleUse;
         plugin.getCommand(commandName).setExecutor(this);
@@ -57,7 +57,7 @@ public abstract class AbstractCommand implements CommandExecutor {
      * Registers all commands in the plugin.
      * @param pl Plugin.
      */
-    public static void registerCommands(ShowItemPlugin pl) {
+    public static void registerCommands(@NotNull final ShowItemPlugin pl) {
         plugin = pl;
         new ShowItemCMD(pl);
         new ShowHelmetCMD(pl);
@@ -71,7 +71,7 @@ public abstract class AbstractCommand implements CommandExecutor {
      * @param sender The Command Sender.
      * @param args Arguments of the command.
      */
-    public abstract void execute(CommandSender sender, String[] args);
+    public abstract void execute(final CommandSender sender, final String[] args);
 
     /**
      * Processes early execution of the plugin.
@@ -82,16 +82,16 @@ public abstract class AbstractCommand implements CommandExecutor {
      * @return Successful Completion.
      */
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
+    public boolean onCommand(@NotNull final CommandSender sender, @NotNull final Command cmd, @NotNull final String label, String[] args) {
         // Makes sure the player has permission to use the command.
         if(!permission.equals("") && !sender.hasPermission(permission)) {
-            ChatUtils.chat(sender, plugin.settingsManager().processMessage(PluginMessage.NO_PERMISSION));
+            ChatUtils.chat(sender, plugin.getConfigManager().processMessage(PluginMessage.NO_PERMISSION));
             return true;
         }
 
         // Makes sure the console can use the command if the sender is the console.
         if(!canConsoleUse && !(sender instanceof Player)) {
-            ChatUtils.chat(sender, plugin.settingsManager().processMessage(PluginMessage.ONLY_PLAYERS_CAN_USE));
+            ChatUtils.chat(sender, plugin.getConfigManager().processMessage(PluginMessage.ONLY_PLAYERS_CAN_USE));
             return true;
         }
 

@@ -36,6 +36,7 @@ import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Runs the /showitem command, which displays the item the player is currently holding in chat.
@@ -48,7 +49,7 @@ public class ShowItemCMD extends AbstractCommand {
      * Creaters the command.
      * @param plugin Instance of the plugin.
      */
-    public ShowItemCMD(final ShowItemPlugin plugin) {
+    public ShowItemCMD(@NotNull final ShowItemPlugin plugin) {
         super("showitem", "showitem.use", false);
         this.plugin = plugin;
     }
@@ -59,16 +60,16 @@ public class ShowItemCMD extends AbstractCommand {
      * @param args Arguments of the command.
      */
     @Override
-    public void execute(CommandSender sender, String[] args) {
-        Player player = (Player) sender;
-        ItemStack item;
+    public void execute(@NotNull final CommandSender sender, @NotNull final String[] args) {
+        final Player player = (Player) sender;
+        final ItemStack item;
 
         // Check if the item should be the main hand or off hand.
         if(player.getInventory().getItemInMainHand() == null || player.getInventory().getItemInMainHand().getType() == Material.AIR) {
 
             // Makes sure they aren't both null.
             if(player.getInventory().getItemInOffHand() == null || player.getInventory().getItemInOffHand().getType() == Material.AIR) {
-                ChatUtils.chat(player, plugin.settingsManager().processMessage(PluginMessage.NO_ITEM_IN_HAND));
+                ChatUtils.chat(player, plugin.getConfigManager().processMessage(PluginMessage.NO_ITEM_IN_HAND));
                 return;
             }
             else {
@@ -80,15 +81,15 @@ public class ShowItemCMD extends AbstractCommand {
         }
 
         // Config string.
-        String configMessage = PlaceholderAPI.setPlaceholders(player, plugin.settingsManager().processMessage(PluginMessage.FORMAT_HAND));
+        final String configMessage = PlaceholderAPI.setPlaceholders(player, plugin.getConfigManager().processMessage(PluginMessage.FORMAT_HAND));
 
         // Item Component.
         String itemName = MiniMessage.miniMessage().serialize(item.displayName());
         if(item.getAmount() > 1) itemName += " <white>x" + item.getAmount();
-        Component itemComponent = Component.text().append(MiniMessage.miniMessage().deserialize(itemName)).hoverEvent(item.asHoverEvent()).asComponent();
+        final Component itemComponent = Component.text().append(MiniMessage.miniMessage().deserialize(itemName)).hoverEvent(item.asHoverEvent()).asComponent();
 
         // Final component
-        Component component = MiniMessage.miniMessage().deserialize(ChatUtils.replaceLegacy(configMessage), Placeholder.component("item", itemComponent));
+        final Component component = MiniMessage.miniMessage().deserialize(ChatUtils.replaceLegacy(configMessage), Placeholder.component("item", itemComponent));
 
         // Broadcast message
         Bukkit.broadcast(component);

@@ -26,6 +26,7 @@ package com.github.firewolf8385.showitem.settings;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
@@ -33,7 +34,7 @@ import java.io.File;
  * Allows easy access to plugin configuration
  * files. Stores spawn and arena locations.
  */
-public class SettingsManager {
+public class ConfigManager {
     private final FileConfiguration config;
     private final File configFile;
 
@@ -41,7 +42,7 @@ public class SettingsManager {
      * Creates the Settings Manager.
      * @param plugin Instance of the plugin.
      */
-    public SettingsManager(Plugin plugin) {
+    public ConfigManager(@NotNull final Plugin plugin) {
         config = plugin.getConfig();
         config.options().copyDefaults(true);
         configFile = new File(plugin.getDataFolder(), "config.yml");
@@ -61,7 +62,7 @@ public class SettingsManager {
      * @param pluginMessage PluginMessage to get String of.
      * @return Configured message in String form.
      */
-    public String processMessage(final PluginMessage pluginMessage) {
+    public String processMessage(@NotNull final PluginMessage pluginMessage) {
         // Show the default value is message config path is missing.
         if(config.isSet(pluginMessage.configPath())) {
             return config.getString(pluginMessage.configPath());
