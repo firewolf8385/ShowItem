@@ -25,6 +25,7 @@
 package com.github.firewolf8385.showitem.settings;
 
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,7 +36,7 @@ import java.io.File;
  * files. Stores spawn and arena locations.
  */
 public class ConfigManager {
-    private final FileConfiguration config;
+    private FileConfiguration config;
     private final File configFile;
 
     /**
@@ -70,5 +71,12 @@ public class ConfigManager {
 
         // Otherwise show what is configured.
         return pluginMessage.defaultValue();
+    }
+
+    /**
+     * Update the configuration file.
+     */
+    public void reloadConfig() {
+        config = YamlConfiguration.loadConfiguration(configFile);
     }
 }

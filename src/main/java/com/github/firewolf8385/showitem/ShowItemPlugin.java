@@ -25,12 +25,15 @@
 package com.github.firewolf8385.showitem;
 
 import com.github.firewolf8385.showitem.commands.AbstractCommand;
+import com.github.firewolf8385.showitem.listeners.ReloadListener;
 import com.github.firewolf8385.showitem.settings.ConfigManager;
+import com.github.firewolf8385.showitem.settings.HookManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ShowItemPlugin extends JavaPlugin {
     private ConfigManager configManager;
+    private HookManager hookManager;
 
     /**
      * Runs when the plugin is first enabled.
@@ -39,12 +42,16 @@ public final class ShowItemPlugin extends JavaPlugin {
     public void onEnable() {
         // Loads the configuration file. Creates if not present.
         configManager = new ConfigManager(this);
+        hookManager = new HookManager(this);
 
         // Enables bStats for statistics tracking.
         new Metrics(this, 19781);
 
         // Register commands.
         AbstractCommand.registerCommands(this);
+
+        // Register Reload listener, if BetterReload is detected.
+        if(hookManager.useBetterReload()) getServer().getPluginManager().registerEvents(new ReloadListener(this), this);
     }
 
     /**
@@ -53,5 +60,20 @@ public final class ShowItemPlugin extends JavaPlugin {
      */
     public ConfigManager getConfigManager() {
         return configManager;
+    }
+
+    /**
+     * Get the Hook Manager, which returns an object that keeps track of hooks into other plugins.
+     * @return HookManager.
+     */
+    public HookManager getHookManager() {
+        return hookManager;
+    }
+
+    /**
+     * Reloads the plugin configuration and updates important values.
+     */
+    public void reload() {
+        this.configManager.reloadConfig();
     }
 }
