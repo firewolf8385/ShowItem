@@ -26,7 +26,6 @@ package com.github.firewolf8385.showitem.utils;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 import java.util.regex.Matcher;
@@ -52,12 +51,8 @@ public class ChatUtils {
      * @return Message with the color codes replaced.
      */
     public static String replaceLegacy(String message) {
-        // Get the server version.
-        String version = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
-        int subVersion = Integer.parseInt(version.replace("1_", "").replaceAll("_R\\d", "").replace("v", ""));
-
         // If the version is 1.16 or greater, check for hex color codes.
-        if(subVersion >= 16) {
+        if(VersionUtils.getServerVersion() >= 16) {
             Pattern pattern = Pattern.compile("&#[a-fA-F0-9]{6}");
             Matcher matcher = pattern.matcher(message);
 
